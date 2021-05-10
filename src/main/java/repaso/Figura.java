@@ -1,21 +1,20 @@
 package repaso;
 
 public abstract class Figura implements Model {
-    private static float maximaSuperficie;
+    private static float maximaSuperfice;
     private String nombre;
 
-    public Figura(String pnombre){
+    //constructores
+    public Figura() {super();	}
+
+    public Figura(String pNombre) {
         super();
-        this.nombre = pnombre;
-
+        this.nombre = pNombre;
     }
+    //getter y setter
 
-    public static float getMaximaSuperficie() {
-        return maximaSuperficie;
-    }
-
-    public static void setMaximaSuperficie(float maximaSuperficie) {
-        Figura.maximaSuperficie = maximaSuperficie;
+    public static float getMaximaSuperfice() {
+        return maximaSuperfice;
     }
 
     public String getNombre() {
@@ -26,12 +25,14 @@ public abstract class Figura implements Model {
         this.nombre = nombre;
     }
 
+
+    //metodos de negocio
     public abstract float calcularPerimetro();
     public abstract float calcularSuperficie();
-    public abstract float getValores();
+    public abstract String getValores();
 
     @Override
-    public int hashCode(){
+    public int hashCode() {
         final int prime = 31;
         int result = 1;
         result = prime * result + ((nombre == null) ? 0 : nombre.hashCode());
@@ -39,17 +40,27 @@ public abstract class Figura implements Model {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Figura figura = (Figura) o;
-        return nombre.equals(figura.nombre);
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        Figura other = (Figura) obj;
+        if (nombre == null) {
+            if (other.nombre != null)
+                return false;
+        } else if (!nombre.equals(other.nombre))
+            return false;
+        return true;
     }
 
     @Override
     public String toString() {
-        return "Figura{" +
-                "nombre='" + nombre + '\'' +
-                '}';
+        StringBuilder sb = new StringBuilder("nombre=");
+        sb.append(nombre);
+        return sb.toString();
     }
+
 }
