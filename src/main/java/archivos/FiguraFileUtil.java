@@ -1,12 +1,12 @@
 package archivos;
 
 
+import jdk.nashorn.internal.parser.JSONParser;
 import repaso.Circulo;
 import repaso.Cuadrado;
 import repaso.Figura;
 
-import java.io.FileWriter;
-import java.io.PrintWriter;
+import java.io.*;
 import java.util.ArrayList;
 
 public class FiguraFileUtil {
@@ -60,10 +60,40 @@ public class FiguraFileUtil {
     public void GenerarArchivo(){
 
     };
-
+/*
     public ArrayList<Figura> LeerFichero(String nombreArchivo, String path){
-        return new ArrayList<Figura>();
-    };
+        File archivo = null;
+        FileReader fr = null;
+        BufferedReader br = null;
+        ArrayList<Figura> figuras =  new ArrayList<Figura>();
+
+
+        try {
+
+            archivo = new File (path + nombreArchivo);
+            fr = new FileReader (archivo);
+            br = new BufferedReader(fr);
+
+
+            String linea;
+            while((linea=br.readLine()) != null){
+                ;
+            }
+
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }finally{
+
+            try{
+                if( null != fr ){
+                    fr.close();
+                }
+            }catch (Exception e2){
+                e2.printStackTrace();
+            }
+        }
+    };*/
 
     public ArrayList<Figura> getFiguras() {
         return figuras;
