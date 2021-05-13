@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        let figuras = ['cuadrado','circulo','triangulo','poligono', 'rectangulo'];
+        let selected = 'cuadrado';
+        
+        function onselectfigura(){
+            selected = document.getElementById("combo").value;
+            change()
+        }
+        function change(){
+            let form = document.getElementById("form");
+            let html = "";
+            if (selected == 'cuadrado' || selected == 'poligono') {
+                html = '<input type="text" placeholder="Lados" />'   
+            }
+            if (selected == 'circulo') {
+                html = '<input type="text" placeholder="Radio" />'
+            }
+            if (selected == 'triangulo' || selected == 'rectangulo') {
+                html = '<input type="text" placeholder="Base" />'
+                html = '<input type="text" placeholder="Altura" />'   
+            }
+
+            if (selected == 'poligono') {
+                html = '<input type="text" placeholder="Numlados" />'
+                html = '<input type="text" placeholder="Apotema" />' 
+            }
+
+            form.innerHTML = html;
+        }
+    </script>
+</head>
+<body>
+    <select id="combo" onchange="onselectfigura()">
+        <script>
+            for (let i = 0; i < figuras.length; i++) {
+                document.write(`<option value="${figuras[i]}">${figuras[i]}</option>`)
+            }
+        </script>
+    </select>
+
+    <div id="form">
+        <script>
+            
+        </script>
+    </div>
+</body>
+</html>
