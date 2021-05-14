@@ -17,19 +17,19 @@
             let form = document.getElementById("form");
             let html = "";
             if (selected == 'cuadrado' || selected == 'poligono') {
-                html = '<input type="text" placeholder="Lados" />'   
+                html += '<div><input type="text" placeholder="Lados" /></div>'   
             }
             if (selected == 'circulo') {
-                html = '<input type="text" placeholder="Radio" />'
+                html += '<div><input type="text" placeholder="Radio" /></div>'
             }
             if (selected == 'triangulo' || selected == 'rectangulo') {
-                html = '<input type="text" placeholder="Base" />'
-                html = '<input type="text" placeholder="Altura" />'   
+                html += '<div><input type="text" placeholder="Base" /></div>'
+                html += '<div><input type="text" placeholder="Altura" /></div>'   
             }
 
             if (selected == 'poligono') {
-                html = '<input type="text" placeholder="Numlados" />'
-                html = '<input type="text" placeholder="Apotema" />' 
+                html += '<div><input type="text" placeholder="Numlados" /></div>'
+                html += '<div><input type="text" placeholder="Apotema" /></div>' 
             }
 
             form.innerHTML = html;
@@ -37,7 +37,7 @@
     </script>
 </head>
 <body>
-    <select id="combo" onchange="onselectfigura()">
+    <select id="combo" style="display: list-item;" onchange="onselectfigura()">
         <script>
             for (let i = 0; i < figuras.length; i++) {
                 document.write(`<option value="${figuras[i]}">${figuras[i]}</option>`)
