@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <title>Document</title>
+    <script>
+        let figuras = ['cuadrado','circulo','triangulo','poligono', 'rectangulo'];
+        let selected = 'cuadrado';
+        
+        function onselectfigura(){
+            selected = document.getElementById("combo").value;
+            document.getElementById("notification").innerText = "";
+            change()
+        }
+        function submit(){
+            let message = "";
+            if (selected == 'cuadrado' || selected == 'poligono') {
+                if(document.getElementById("campo1").value == ""){
+                    message = "Error: falta campos";
+                }else{
+                    message = "Enviado";
+                }
+            }
+            if (selected == 'circulo') {
+                if(document.getElementById("campo1").value == ""){
+                    message = "Error: falta campos";
+                }else{
+                    message = "Enviado";
+                }
+            }
+            if (selected == 'triangulo' || selected == 'rectangulo') {
+                if(document.getElementById("campo1").value == "" || document.getElementById("campo2").value == ""){
+                    message = "Error: falta campos";
+                }else{
+                    message = "Enviado";
+                }
+            }
+
+            if (selected == 'poligono') {
+                if(document.getElementById("campo1").value == "" || document.getElementById("campo2").value == ""){
+                    message = "Error: falta campos";
+                }else{
+                    message = "Enviado";
+                }
+            }
+            document.getElementById("notification").innerText = message;
+        }
+        function change(){
+            let form = document.getElementById("form");
+            let html = "";
+            if (selected == 'cuadrado' || selected == 'poligono') {
+                html += '<tr><td>Lados</td><td><input id="campo1" type="text" placeholder="Lados" /></td></tr>'   
+            }
+            if (selected == 'circulo') {
+                html += '<tr><td>Radio</td><td><input id="campo1" type="text" placeholder="Radio" /></td></tr>'
+            }
+            if (selected == 'triangulo' || selected == 'rectangulo') {
+                html += '<tr><td>Base</td><td><input id="campo1" type="text" placeholder="Base" /></td></tr>'
+                html += '<tr><td>Altura</td><td><input id="campo2" type="text" placeholder="Altura" /></td></tr>'   
+            }
+
+            if (selected == 'poligono') {
+                html += '<tr><td>Numero lados</td><td><input id="campo1" type="text" placeholder="Numlados" /></td></tr>'
+                html += '<tr><td>Apotema</td><td><input id="campo2" type="text" placeholder="Apotema" /></td></tr>' 
+            }
+
+            form.innerHTML = html;
+        }
+    </script>
+</head>
+<body>
+    <select id="combo" onchange="onselectfigura()">
+        <script>
+            for (let i = 0; i < figuras.length; i++) {
+                document.write(`<option value="${figuras[i]}">${figuras[i]}</option>`)
+            }
+        </script>
+    </select>
+
+    <div style="margin:10px">
+        <div style="display: flex; justify-content: space-between;">
+                <div>Fecha: <script>document.write(new Date().getFullYear() + "-" + new Date().getMonth() + "-" + new Date().getDay())</script></div>
+            <div><button onclick="submit()" class="btn btn-primary">Submit</button></div>
+            
+        </div>
+        <div id="notification">
+        </div>
+        <table class="table">
+            <thead>
+              <tr>
+                <th>Nombre</th>
+                <th>Campo</th>
+              </tr>
+            </thead>
+            <tbody id="form">
+            </tbody>
+          </table>
+    </div>
+</body>
+</html>
